@@ -9,9 +9,9 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Clayton Parker"]
   spec.email         = ["robots@claytron.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Turn a twitter feed into a fortune file}
+  spec.description   = %q{This gem turns a twitter feed into a fortune file that you can use with the fortune program}
+  spec.homepage      = "https://github.com/claytron/augury"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
