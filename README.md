@@ -20,6 +20,27 @@ Or install it yourself as:
 
     $ gem install augury
 
+## Configuration
+
+First, you will need to create a new Twitter application by going here:
+
+https://apps.twitter.com
+
+This will give you the ability to generate the consumer and access information used below.
+
+In order to use this gem, you need to set up your Twitter credentials.
+This can be done by setting up the `~/.augury.conf` file.
+Here is an example of its contents:
+
+  consumer_key = "YOUR_CONSUMER_KEY"
+  consumer_secret = "YOUR_CONSUMER_SECRET"
+  access_token = "YOUR_ACCESS_TOKEN"
+  access_token_secret = "YOUR_ACCESS_SECRET"
+
+Make sure only your user has access to the file:
+
+  $ chmod 600 ~/.augury.conf
+
 ## Usage
 
 TODO: Write usage instructions here
