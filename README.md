@@ -3,29 +3,43 @@
 Have you ever wanted to turn a twitter account into a fortune file?
 Well, today is your lucky day!
 
-Here is an example:
+<blockquote>
+Augury is the practice from ancient Roman religion of<br>
+interpreting omens from the observed flight of birds.<br><br>
+As per [Wikipedia](https://en.wikipedia.org/wiki/Augury)
+</blockquote>
+
+There are a lot of really funny twitter accounts out there.
+Let's just pick one and get started.
 
 ```
-$ augury generate SeinfeldToday
+$ augury generate seinfeldtoday
 ```
 
 This just created the fortune files in the current directory:
 
 ```
 $ ls
-SeinfeldToday SeinfeldToday.dat
+seinfeldtoday seinfeldtoday.dat
 ```
 
 You can now read the new fortunes!
 
 ```
-$ fortune SeinfeldToday
+$ fortune seinfeldtoday
 Elaine has no idea what her BF does for a living and it's now too
 late to ask. E:"Teacher, I think. Or a doctor? Wait Is
 'computers' a job?"
 ```
 
 Thanks for all the laughs fortune :)
+
+Here are some accounts that work well with Augury:
+
+- [Modern Seinfeld](https://twitter.com/seinfeldtoday)
+- [Very Short Story](https://twitter.com/veryshortstory)
+- [Bored Elon Musk](https://twitter.com/boredelonmusk)
+- Your own feed, so you can get nostalgic.
 
 ## Installation
 
@@ -81,8 +95,10 @@ example_option = "An interesting value"
 
 These are the available options for the `~/.augury.cfg`
 
-- `append` Make the script add more entries to the specified file instead of re-writing it. DEFAULT: False
-- `width` Set the default width used if none is given on the command line. DEFAULT: 72
+Option | Description | Default
+------ | :---------- | -------
+`append` | Make the script add more entries to the specified file instead of re-writing it | `false`
+`width` | Set the default width used if none is given on the command line. | `72`
 
 ### Twitter Setup
 
@@ -103,29 +119,75 @@ access_token_secret = "YOUR_ACCESS_SECRET"
 
 ## Usage
 
-Create a fortune for the latest SeinfeldToday tweets.
+Create a fortune for the latest *seinfeldtoday* tweets.
 
 ```
-$ augury generate SeinfeldToday
+$ augury generate seinfeldtoday
 ```
 
 Now you have some fortunes.
 
 ```
-$ fortune SeinfeldToday
+$ fortune seinfeldtoday
+```
+
+Specify a width and a different path to use:
+
+```
+$ augury generate -w 120 seinfeldtoday /usr/local/share/games/fortune/Modern\ Seinfeld
+```
+
+If this is where your fortune program looks for fortunes,
+you can now use the new fortune.
+
+```
+$ fortune "Modern Seinfeld"
+```
+
+### See the interactive help
+
+Run the help to get more details about what the program can do
+
+```
+$ bin/augury help
+$ bin/augury help generate
 ```
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies.
-Then, run `rake spec` to run the tests.
-You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+If you want to contribute to this library,
+do the following.
 
-To install this gem onto your local machine, run `bundle exec rake install`.
-To release a new version, update the version number in `version.rb`,
-and then run `bundle exec rake release`,
-which will create a git tag for the version,
-push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Create a fork, then get the code
+
+```
+$ git clone git@github.com:YOUR_USERNAME/augury.git
+$ cd augury
+```
+
+Run the setup script to get everything installed:
+
+**NOTE**: This requires having bundler available.
+That is beyond the scope of this README.
+
+```
+$ bin/setup
+```
+
+Once that is finished, there is a console available.
+This gives you access to all the code via Pry.
+
+```
+$ bin/console
+```
+
+### Run the tests
+
+You can run the tests with the rake task:
+
+```
+$ rake spec
+```
 
 ## Contributing
 
@@ -134,3 +196,16 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/claytr
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+## Thanks for all the fish
+
+Thanks to [TinderBox](http://gettinderbox.com) for giving us time to make cool things happen!
+
+This was an excellent learning experience for the author,
+who is new at programming in Ruby.
+
+The [Developing a RubyGem using Bundler][gemdocs] documentation was fun to read and informative.
+It helped get the skeleton of the code set up and extra goodies in the development profile.
+Highly recommended read!
+
+[gemdocs]: https://github.com/radar/guides/blob/master/gem-development.md#developing-a-rubygem-using-bundler
