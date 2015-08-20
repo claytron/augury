@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["robots@claytron.com"]
 
   spec.summary       = %q{Turn a twitter feed into a fortune file}
-  spec.description   = File.open('README.md').read
+  spec.description   = %q{This gem turns a twitter feed into a fortune file that you can use with the fortune program}
   spec.homepage      = "https://github.com/claytron/augury"
   spec.license       = "MIT"
 
