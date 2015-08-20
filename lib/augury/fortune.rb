@@ -49,7 +49,7 @@ module Augury
         file.close unless file.nil?
       end
       # Create the dat file too
-      `strfile #{@path} #{@path}.dat`
+      `strfile '#{@path}' '#{@path}.dat'`
     end
   end
 end
