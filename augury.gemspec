@@ -20,19 +20,26 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Actual dependencies
-  spec.add_dependency "twitter"
   spec.add_dependency "parseconfig"
   spec.add_dependency "thor"
+  spec.add_dependency "twitter"
   ## Handle booleans from simple config
   spec.add_dependency "wannabe_bool"
   ## For the word_wrap function
   spec.add_dependency "facets"
 
   # Development dependencies
+  ## Setup
   spec.add_development_dependency "bundler", "~> 1.10"
   spec.add_development_dependency "rake", "~> 10.0"
+  ## Testing
   spec.add_development_dependency "rspec"
-  spec.add_development_dependency "pry"
   spec.add_development_dependency "cucumber"
   spec.add_development_dependency "aruba"
+  ## Debugging
+  spec.add_development_dependency "pry"
+  spec.add_development_dependency 'pry-stack_explorer'
+  spec.add_development_dependency 'pry-byebug'
+  spec.add_development_dependency 'pry-doc'
+  spec.add_development_dependency 'pry-awesome_print'
 end
