@@ -21,7 +21,7 @@ module Augury
       end
       tweets = augury.tweet_texts
       augury.write_fortune(augury.format_fortune(tweets))
-      puts "Fortune written out to #{path}"
+      self.say "Fortune written out to #{path}"
     end
   end
 end
