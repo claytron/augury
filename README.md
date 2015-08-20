@@ -1,8 +1,31 @@
 # Augury
 
-Have you ever wanted to turn a twitter account into an updating fortune file?
+Have you ever wanted to turn a twitter account into a fortune file?
 Well, today is your lucky day!
-Augury can take a twitter feed and turn it into a fortune file for you.
+
+Here is an example:
+
+```
+$ augury generate SeinfeldToday
+```
+
+This just created the fortune files in the current directory:
+
+```
+$ ls
+SeinfeldToday SeinfeldToday.dat
+```
+
+You can now read the new fortunes!
+
+```
+$ fortune SeinfeldToday
+Elaine has no idea what her BF does for a living and it's now too
+late to ask. E:"Teacher, I think. Or a doctor? Wait Is
+'computers' a job?"
+```
+
+Thanks for all the laughs fortune :)
 
 ## Installation
 
@@ -14,36 +37,83 @@ gem 'augury'
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install augury
+```
+$ gem install augury
+```
+
+### Requirements
+
+This gem requires that the fortune program is also installed.
+The fortune program ships with a `strfile` program that converts the plain text files to something that fortune can select from.
+
+For example,
+if you are using Homebrew on OS X:
+
+```
+$ brew install fortune
+```
 
 ## Configuration
 
-First, you will need to create a new Twitter application by going here:
+### Augury Config
 
+Create the `~/.augry.cfg` file and then set the permissions since your Twitter API info will be in there.
+
+```sh
+$ touch ~/.augury.cfg
+$ chmod 600 ~/.augury.cfg
+```
+
+Set any of these settings in the `augury` section of the config like this:
+
+```ini
+[augury]
+example_option = "An interesting value"
+```
+
+### Option list
+
+These are the available options for the `~/.augury.cfg`
+
+- `append` Make the script add more entries to the specified file instead of re-writing it. DEFAULT: False
+- `width` Set the default width used if none is given on the command line. DEFAULT: 72
+
+### Twitter Setup
+
+First, you will need to create a new Twitter application by going here:
 https://apps.twitter.com
 
 This will give you the ability to generate the consumer and access information used below.
 
-In order to use this gem, you need to set up your Twitter credentials.
-This can be done by setting up the `~/.augury.conf` file.
-Here is an example of its contents:
+Add the following to your `~/.augury.cfg` file.
 
-  consumer_key = "YOUR_CONSUMER_KEY"
-  consumer_secret = "YOUR_CONSUMER_SECRET"
-  access_token = "YOUR_ACCESS_TOKEN"
-  access_token_secret = "YOUR_ACCESS_SECRET"
-
-Make sure only your user has access to the file:
-
-  $ chmod 600 ~/.augury.conf
+```ini
+[twitter]
+consumer_key = "YOUR_CONSUMER_KEY"
+consumer_secret = "YOUR_CONSUMER_SECRET"
+access_token = "YOUR_ACCESS_TOKEN"
+access_token_secret = "YOUR_ACCESS_SECRET"
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Create a fortune for the latest SeinfeldToday tweets.
+
+```
+$ augury generate SeinfeldToday
+```
+
+Now you have some fortunes.
+
+```
+$ fortune SeinfeldToday
+```
 
 ## Development
 

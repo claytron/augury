@@ -5,3 +5,4 @@ module Augury
 end
 
 require 'augury/fortune'
+require 'augury/exception'

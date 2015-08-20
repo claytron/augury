@@ -23,6 +23,10 @@ Gem::Specification.new do |spec|
   spec.add_dependency "twitter"
   spec.add_dependency "parseconfig"
   spec.add_dependency "thor"
+  ## Handle booleans from simple config
+  spec.add_dependency "wannabe_bool"
+  ## For the word_wrap function
+  spec.add_dependency "facets"
 
   # Development dependencies
   spec.add_development_dependency "bundler", "~> 1.10"
