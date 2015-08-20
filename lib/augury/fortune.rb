@@ -43,8 +43,6 @@ module Augury
         file = File.open(@path, mode)
         file.write("%\n") if @append
         file.write(text)
-      rescue IOError => e
-        puts e
       ensure
         file.close unless file.nil?
       end
