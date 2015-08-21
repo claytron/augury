@@ -5,7 +5,7 @@ require 'wannabe_bool'
 
 module Augury
   class Fortune
-    def initialize(username, path, width=nil, append=nil)
+    def initialize(username, path, width=nil, append=nil, count=nil)
       begin
         @config = ParseConfig.new(File.expand_path('~/.augury.cfg'))
       rescue Errno::EACCES
@@ -17,6 +17,7 @@ module Augury
       @path = path
       @width = (width || augury_config['width'] || 72).to_i
       @append = (append || augury_config['append'] || false).to_b
+      @count = (count || augury_config['count'] || 200).to_i
 
       twitter_config = @config.params['twitter']
       raise Augury::TwitterConfigError unless twitter_config
@@ -28,15 +29,42 @@ module Augury
       end
     end
 
-    def tweet_texts
-      @twitter.user_timeline(@username).flat_map { |tweet| tweet.full_text }
+    def collect_with_max_id(collection=[], max_id=nil, &block)
+      response = yield(max_id)
+      collection += response
+      if response.empty?
+        collection.flatten
+      elsif ! @count.zero? && collection.length >= @count
+        collection.flatten
+      else
+        collect_with_max_id(collection, response.last.id - 1, &block)
+      end
     end
 
-    def format_fortune(tweets)
-      tweets.flat_map { |tweet| tweet.word_wrap(@width) }.join("%\n")
+    def tweets
+      begin
+        collect_with_max_id do |max_id|
+          options = {
+            count: @count.zero? ? 200 : @count,
+            include_rts: true,
+          }
+          options[:max_id] = max_id unless max_id.nil?
+          @twitter.user_timeline(@username, options)
+        end
+      rescue Twitter::Error::TooManyRequests => e
+        reset_length = e.rate_limit.reset_in + 1
+        puts "Twitter rate limit exceeded. Waiting #{reset_length} minute(s)"
+        sleep reset_length
+      end
     end
 
-    def write_fortune(text)
+    def format_fortune
+      tweet_texts = self.tweets.flat_map { |tweet| tweet.full_text }
+      tweet_texts.flat_map { |tweet| tweet.word_wrap(@width) }.join("%\n")
+    end
+
+    def write_fortune
+      text = self.format_fortune
       # Write out the file
       begin
         mode = @append ? 'a' : 'w'

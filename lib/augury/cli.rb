@@ -10,6 +10,9 @@ module Augury
     option :append,
       :type => :boolean, :aliases => '-a',
       :desc => 'If set, the target path will be appended to instead of overwritten'
+    option :count,
+      :type => :numeric, :aliases => '-c',
+      :desc => 'The number of tweets to get. Set to 0 to get all. DEFAULT: 200'
     def generate(username, *path)
       begin
         path = File.expand_path(path[0] || username)
@@ -17,10 +20,10 @@ module Augury
             username,
             path,
             options['width'],
-            options['append']
+            options['append'],
+            options['count'],
           )
-        tweets = augury.tweet_texts
-        augury.write_fortune(augury.format_fortune(tweets))
+        augury.write_fortune
         self.say "Fortune written out to #{path}"
       rescue => e
         self.say "There was an error running the command. Details below:"
