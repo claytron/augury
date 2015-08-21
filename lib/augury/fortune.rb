@@ -15,8 +15,8 @@ module Augury
       augury_config = @config.params['augury'] || {}
       @username = username
       @path = path
-      @width = width || augury_config['width'] || 72
-      @append = append || augury_config['append'].to_b || false
+      @width = (width || augury_config['width'] || 72).to_i
+      @append = (append || augury_config['append'] || false).to_b
 
       twitter_config = @config.params['twitter']
       raise Augury::TwitterConfigError unless twitter_config

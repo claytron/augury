@@ -5,8 +5,8 @@ module Augury
   class CLI < Thor
     desc 'generate USERNAME [PATH]', 'Generate a fortune file for the given username'
     option :width,
-      :type => :numeric, :aliases => '-w', :default => 72,
-      :desc => 'The maximum number of columns that will be written on a line.'
+      :type => :numeric, :aliases => '-w',
+      :desc => 'The maximum number of columns that will be written on a line. DEFAULT: 72'
     option :append,
       :type => :boolean, :aliases => '-a',
       :desc => 'If set, the target path will be appended to instead of overwritten'
