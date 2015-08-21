@@ -181,6 +181,12 @@ This gives you access to all the code via Pry.
 $ bin/console
 ```
 
+The `augury` command will be available in bin:
+
+```
+$ bin/augury help
+```
+
 ### Run the tests
 
 You can run the tests with the rake task:
