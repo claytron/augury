@@ -12,21 +12,8 @@ module Augury
         @config = ParseConfig.new
       end
 
-      augury_config = @config.params['augury'] || {}
-      @username = username
-      @path = path
-      @width = (width || augury_config['width'] || 72).to_i
-      @append = (append || augury_config['append'] || false).to_b
-      @count = (count || augury_config['count'] || 200).to_i
-
-      twitter_config = @config.params['twitter']
-      raise Augury::TwitterConfigError unless twitter_config
-      @twitter  = Twitter::REST::Client.new do |config|
-        config.consumer_key = twitter_config['consumer_key']
-        config.consumer_secret = twitter_config['consumer_secret']
-        config.access_token = twitter_config['access_token']
-        config.access_token_secret = twitter_config['access_token_secret']
-      end
+      augury_config(username, path, width, append, count)
+      twitter_config
     end
 
     def collect_with_max_id(collection=[], max_id=nil, &block)
@@ -76,6 +63,28 @@ module Augury
       end
       # Create the dat file too
       `strfile '#{@path}' '#{@path}.dat'`
+    end
+  end
+
+private
+
+  def augury_config
+    config = @config.params['augury'] || {}
+    @username = username
+    @path = path
+    @width = (width || config['width'] || 72).to_i
+    @append = (append || config['append'] || false).to_b
+    @count = (count || config['count'] || 200).to_i
+  end
+
+  def twitter_config
+    config = @config.params['twitter']
+    raise Augury::TwitterConfigError unless config
+    @twitter = Twitter::REST::Client.new do |cfg|
+      cfg.consumer_key = config['consumer_key']
+      cfg.consumer_secret = config['consumer_secret']
+      cfg.access_token = config['access_token']
+      cfg.access_token_secret = config['access_token_secret']
     end
   end
 end
