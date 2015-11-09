@@ -27,13 +27,14 @@ Gem::Specification.new do |spec|
   spec.add_dependency "wannabe_bool"
   ## For the word_wrap function
   spec.add_dependency "facets"
+  ## To test mutation station :)
+  spec.add_dependency "rspec", "3.2.0"
 
   # Development dependencies
   ## Setup
   spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake", "~> 10.0"
   ## Testing
-  spec.add_development_dependency "rspec", "3.2.0"
   spec.add_development_dependency "cucumber"
   spec.add_development_dependency "aruba"
   ## Debugging
