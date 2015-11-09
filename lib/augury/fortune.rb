@@ -29,20 +29,18 @@ module Augury
     end
 
     def tweets
-      begin
-        collect_with_max_id do |max_id|
-          options = {
-            count: @count.zero? ? 200 : @count,
-            include_rts: true,
-          }
-          options[:max_id] = max_id unless max_id.nil?
-          @twitter.user_timeline(@username, options)
-        end
-      rescue Twitter::Error::TooManyRequests => e
-        reset_length = e.rate_limit.reset_in + 1
-        puts "Twitter rate limit exceeded. Waiting #{reset_length} minute(s)"
-        sleep reset_length
+      collect_with_max_id do |max_id|
+        options = {
+          count: @count.zero? ? 200 : @count,
+          include_rts: true,
+        }
+        options[:max_id] = max_id unless max_id.nil?
+        @twitter.user_timeline(@username, options)
       end
+    rescue Twitter::Error::TooManyRequests => e
+      reset_length = e.rate_limit.reset_in + 1
+      puts "Twitter rate limit exceeded. Waiting #{reset_length} minute(s)"
+      sleep reset_length
     end
 
     def format_fortune
