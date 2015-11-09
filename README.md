@@ -1,5 +1,8 @@
 # Augury
 
+[![Code Climate](https://codeclimate.com/github/claytron/augury/badges/gpa.svg)](https://codeclimate.com/github/claytron/augury)
+[![Test Coverage](https://codeclimate.com/github/claytron/augury/badges/coverage.svg)](https://codeclimate.com/github/claytron/augury/coverage)
+
 Have you ever wanted to turn a twitter account into a fortune file?
 Well, today is your lucky day!
 
