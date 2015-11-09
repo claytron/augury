@@ -62,27 +62,27 @@ module Augury
       # Create the dat file too
       `strfile '#{@path}' '#{@path}.dat'`
     end
-  end
 
-private
+  private
 
-  def augury_config
-    config = @config.params['augury'] || {}
-    @username = username
-    @path = path
-    @width = (width || config['width'] || 72).to_i
-    @append = (append || config['append'] || false).to_b
-    @count = (count || config['count'] || 200).to_i
-  end
+    def augury_config(username, path, width, append, count)
+      config = @config.params['augury'] || {}
+      @username = username
+      @path = path
+      @width = (width || config['width'] || 72).to_i
+      @append = (append || config['append'] || false).to_b
+      @count = (count || config['count'] || 200).to_i
+    end
 
-  def twitter_config
-    config = @config.params['twitter']
-    raise Augury::TwitterConfigError unless config
-    @twitter = Twitter::REST::Client.new do |cfg|
-      cfg.consumer_key = config['consumer_key']
-      cfg.consumer_secret = config['consumer_secret']
-      cfg.access_token = config['access_token']
-      cfg.access_token_secret = config['access_token_secret']
+    def twitter_config
+      config = @config.params['twitter']
+      raise Augury::TwitterConfigError unless config
+      @twitter = Twitter::REST::Client.new do |cfg|
+        cfg.consumer_key = config['consumer_key']
+        cfg.consumer_secret = config['consumer_secret']
+        cfg.access_token = config['access_token']
+        cfg.access_token_secret = config['access_token_secret']
+      end
     end
   end
 end

@@ -5,7 +5,9 @@ describe Augury do
     expect(Augury::VERSION).not_to be nil
   end
 
-  it 'does something useful' do
-    expect(false).to eq(true)
+  it 'loads the code of the app to show the poor test coverage' do
+    Augury::Fortune.new('SeinfeldToday', '/tmp/funny')
+    # Best test evar
+    expect(true).to eq(true)
   end
 end
