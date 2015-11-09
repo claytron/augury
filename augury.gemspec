@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
 
   # Development dependencies
   ## Setup
-  spec.add_development_dependency "bundler", "~> 1.10"
+  spec.add_development_dependency "bundler"
   spec.add_development_dependency "rake", "~> 10.0"
   ## Testing
   spec.add_development_dependency "rspec", "3.2.0"
