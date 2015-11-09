@@ -29,6 +29,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'facets'
   ## To test mutation station :)
   spec.add_dependency 'rspec', '~>3.2.0'
+  spec.add_dependency 'equalizer', '~>0.0.11'
 
   # Development dependencies
   ## Setup
