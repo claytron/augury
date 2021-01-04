@@ -1,7 +1,7 @@
 # Augury
 
 [![Code Climate](https://codeclimate.com/github/claytron/augury/badges/gpa.svg)](https://codeclimate.com/github/claytron/augury)
-[![Test Coverage](https://codeclimate.com/github/claytron/augury/badges/coverage.svg)](https://codeclimate.com/github/claytron/augury/coverage)
+![Tests](https://travis-ci.com/claytron/augury.svg?branch=master)
 
 Have you ever wanted to turn a twitter account into a fortune file?
 Well, today is your lucky day!
@@ -212,7 +212,7 @@ The gem is available as open source under the terms of the [MIT License](http://
 Thanks to [TinderBox](http://gettinderbox.com) for giving us time to make cool things happen!
 
 This was an excellent learning experience for the author,
-who is new at programming in Ruby.
+who was new at programming in Ruby.
 
 The [Developing a RubyGem using Bundler][gemdocs] documentation was fun to read and informative.
 It helped get the skeleton of the code set up and extra goodies in the development profile.
