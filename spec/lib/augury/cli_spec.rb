@@ -1,5 +1,5 @@
 require 'spec_helper'
+require 'augury/cli'
 
-describe Augury::Fortune do
-
+describe Augury::CLI do
 end
