@@ -20,28 +20,24 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Actual dependencies
-  spec.add_dependency 'parseconfig'
-  spec.add_dependency 'thor'
-  spec.add_dependency 'twitter'
+  spec.add_dependency 'parseconfig', '~>1.0'
+  spec.add_dependency 'thor', '~>1.0'
+  spec.add_dependency 'twitter', '~>7.0'
   ## Handle booleans from simple config
-  spec.add_dependency 'wannabe_bool'
+  spec.add_dependency 'wannabe_bool', '~>0.7'
   ## For the word_wrap function
-  spec.add_dependency 'facets'
-  ## To test mutation station :)
-  spec.add_dependency 'rspec', '~>3.2.0'
-  spec.add_dependency 'equalizer', '~>0.0.11'
+  spec.add_dependency 'facets', '~>3.0'
+  spec.add_dependency 'equalizer', '~>0.0'
 
   # Development dependencies
   ## Setup
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'rake'
   ## Testing
-  spec.add_development_dependency 'rspec', '~>3.2.0'
-  spec.add_development_dependency 'codeclimate-test-reporter'
+  spec.add_development_dependency 'rspec', '~>3.10'
+  spec.add_development_dependency 'fakefs', '~>1.0'
   ## Debugging
   spec.add_development_dependency 'pry'
-  spec.add_development_dependency 'pry-stack_explorer'
   spec.add_development_dependency 'pry-byebug'
-  spec.add_development_dependency 'pry-doc'
   spec.add_development_dependency 'pry-awesome_print'
 end
