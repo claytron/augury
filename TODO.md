@@ -9,3 +9,4 @@ Some ideas for things that could be added:
 - Series of regex that could be applied.
   This would be a way to make SeinfeldToday dialog get put on their own lines.
 - Different word wrapping options. To a width, or by sentence, or whatever.
+- Filter out retweets and direct replies
