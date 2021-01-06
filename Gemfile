@@ -17,6 +17,7 @@ gem 'pry-awesome_print'
 gem 'pry-byebug'
 
 # Linting / completion
+gem 'rubocop', '1.7.0'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
 gem 'solargraph'
