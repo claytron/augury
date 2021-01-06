@@ -3,3 +3,39 @@ AllCops:
   Exclude:
     - bin/**/*
     - vendor/**/*
+
+Style/TrailingCommaInArguments:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInHashLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/TrailingCommaInArrayLiteral:
+  EnforcedStyleForMultiline: comma
+
+Style/RedundantSelf:
+  Enabled: false
+
+Layout/IndentationWidth:
+  Enabled: false
+
+# Alignment so that changing var / method does not change all lines in diff
+Layout/ParameterAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/ArgumentAlignment:
+  EnforcedStyle: with_fixed_indentation
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  EnforcedStyle: indented
+
+Layout/EndAlignment:
+  EnforcedStyleAlignWith: variable
+  AutoCorrect: true
+
+Layout/CaseIndentation:
+  EnforcedStyle: end
+  IndentOneStep: true
