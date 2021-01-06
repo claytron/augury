@@ -1,7 +1,8 @@
-require "augury/version"
+# frozen_string_literal: true
+
+require 'augury/version'
 
 module Augury
-  # Your code goes here...
 end
 
 require 'augury/fortune'

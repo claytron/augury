@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Augury
   class TwitterConfigError < StandardError
     def message

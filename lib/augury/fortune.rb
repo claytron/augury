@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'facets/string/word_wrap'
 require 'parseconfig'
 require 'twitter'
@@ -77,6 +79,7 @@ module Augury
     def twitter_config
       config = @config.params['twitter']
       raise Augury::TwitterConfigError unless config
+
       @twitter = Twitter::REST::Client.new do |cfg|
         cfg.consumer_key = config['consumer_key']
         cfg.consumer_secret = config['consumer_secret']
