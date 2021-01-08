@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'cgi'
 require 'facets/string/word_wrap'
 require 'twitter'
 
@@ -44,7 +45,7 @@ module Augury
       filtered = @tweets.flat_map(&:full_text).reject do |tweet|
         tweet.match(/https?:/) unless @config[:links]
       end
-      formatted = filtered.flat_map { |tweet| tweet.word_wrap(@config[:width]) }
+      formatted = filtered.flat_map { |tweet| CGI.unescapeHTML(tweet).word_wrap(@config[:width]) }
       author = @config[:attribution] ? "\n-- #{@twitter.user(@username).name}\n" : ''
       formatted.join("#{author}%\n")
     end
