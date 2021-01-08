@@ -23,6 +23,21 @@ module Augury
       aliases: '-c',
       desc: 'The number of tweets to get. Set to 0 to get all. DEFAULT: 200'
 
+    option :retweets,
+      type: :boolean,
+      aliases: '-r',
+      desc: 'Include retweets. DEFAULT: false'
+
+    option :replies,
+      type: :boolean,
+      aliases: '-R',
+      desc: 'Include replies. DEFAULT: false'
+
+    option :links,
+      type: :boolean,
+      aliases: '-l',
+      desc: 'Include tweets with links in them. DEFAULT: false'
+
     def generate(username, *path)
       path = File.expand_path(path[0] || username)
       augury = Augury::Fortune.new(username, path, options)
@@ -45,6 +60,9 @@ module Augury
           width: 72,
           append: false,
           count: 200,
+          retweets: false,
+          replies: false,
+          links: false,
         },
       )
 

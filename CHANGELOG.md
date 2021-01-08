@@ -3,6 +3,7 @@
 ## 1.0.0 (2020-01-08)
 
 - Convert augury config from ini style to yaml (breaking change)
+- Add options for filtering out tweets (retweets, replies, links)
 
 ## 0.3.0 (2015-08-20)
 

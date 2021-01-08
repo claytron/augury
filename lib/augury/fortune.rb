@@ -27,8 +27,9 @@ module Augury
     def retrieve_tweets
       collect_with_max_id do |max_id|
         options = {
-          include_rts: true,
           count: @config[:count].zero? ? 200 : @config[:count],
+          include_rts: @config[:retweets],
+          exclude_replies: !@config[:replies],
         }
         options[:max_id] = max_id unless max_id.nil?
         @tweets = @twitter.user_timeline(@username, options)
@@ -40,8 +41,11 @@ module Augury
     end
 
     def format_fortune
-      tweet_texts = @tweets.flat_map(&:full_text)
-      tweet_texts.flat_map { |tweet| tweet.word_wrap(@config[:width]) }.join("%\n")
+      filtered = @tweets.flat_map(&:full_text).reject do |tweet|
+        tweet.match(/https?:/) unless @config[:links]
+      end
+      formatted = filtered.flat_map { |tweet| tweet.word_wrap(@config[:width]) }
+      formatted.join("%\n")
     end
 
     def write_fortune

@@ -104,6 +104,9 @@ Option | Description | Default
 `append` | Make the script add more entries to the specified file instead of re-writing it | `false`
 `width` | Set the default width used if none is given on the command line. | `72`
 `count` | The number of tweets to get. Set to 0 to get all. | `200`
+`retweets` | Include retweets. | `false`
+`replies` | Include replies. | `false`
+`links` | Include tweets with links in them. | `false`
 
 ### Twitter Setup
 
