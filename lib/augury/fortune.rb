@@ -9,6 +9,7 @@ module Augury
       @username = username
       @path = path
       @config = config
+      @tweets = []
     end
 
     def collect_with_max_id(collection = [], max_id = nil, &block)
@@ -23,14 +24,14 @@ module Augury
       end
     end
 
-    def tweets
+    def retrieve_tweets
       collect_with_max_id do |max_id|
         options = {
           include_rts: true,
           count: @config[:count].zero? ? 200 : @config[:count],
         }
         options[:max_id] = max_id unless max_id.nil?
-        @twitter.user_timeline(@username, options)
+        @tweets = @twitter.user_timeline(@username, options)
       end
     rescue Twitter::Error::TooManyRequests => e
       reset_length = e.rate_limit.reset_in + 1
@@ -39,7 +40,7 @@ module Augury
     end
 
     def format_fortune
-      tweet_texts = self.tweets.flat_map(&:full_text)
+      tweet_texts = @tweets.flat_map(&:full_text)
       tweet_texts.flat_map { |tweet| tweet.word_wrap(@config[:width]) }.join("%\n")
     end
 

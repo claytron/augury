@@ -27,6 +27,7 @@ module Augury
       path = File.expand_path(path[0] || username)
       augury = Augury::Fortune.new(username, path, options)
       augury.twitter_setup
+      augury.retrieve_tweets
       augury.write_fortune
       say "Fortune written out to #{path}"
     rescue StandardError => e
