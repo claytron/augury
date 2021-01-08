@@ -81,14 +81,14 @@ $ brew install fortune
 
 ### Augury Config
 
-Create the `~/.augry.cfg` file and then set the permissions since your Twitter API info will be in there.
+Create the `~/.augry.yml` file and then set the permissions since your Twitter API info will be in there.
 
 ```sh
-$ touch ~/.augury.cfg
-$ chmod 600 ~/.augury.cfg
+$ touch ~/.augury.yml
+$ chmod 600 ~/.augury.yml
 ```
 
-Set any of these settings in the `augury` section of the config like this:
+Set any of the available settings in the config like this:
 
 ```yaml
 count: 20
