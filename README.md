@@ -112,7 +112,7 @@ Option | Description | Default
 ### Twitter Setup
 
 First, you will need to create a new Twitter application by going here:
-https://apps.twitter.com
+https://developer.twitter.com
 
 This will give you the ability to generate the consumer and access information used below.
 
