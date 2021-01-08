@@ -39,3 +39,7 @@ Layout/EndAlignment:
 Layout/CaseIndentation:
   EnforcedStyle: end
   IndentOneStep: true
+
+# Ignore for rspec
+Metrics/BlockLength:
+  ExcludedMethods: ['describe', 'context']

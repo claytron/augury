@@ -1,5 +1,12 @@
 # Changes
 
+## 1.0.0 (2020-01-08)
+
+- Convert augury config from ini style to yaml (breaking change)
+- Add options for filtering out tweets (retweets, replies, links)
+- Add option to show twitter user name as an attribution
+- Ensure output has not html entities in it
+
 ## 0.3.0 (2015-08-20)
 
 - Add `count` option and allow for a user to get all tweets

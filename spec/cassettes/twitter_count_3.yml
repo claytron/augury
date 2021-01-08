@@ -1,0 +1,184 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.twitter.com/oauth2/token
+    body:
+      encoding: UTF-8
+      string: grant_type=client_credentials
+    headers:
+      User-Agent:
+      - TwitterRubyGem/7.0.0
+      Accept:
+      - "*/*"
+      Authorization:
+      - Basic <AUTH>
+      Connection:
+      - close
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Host:
+      - api.twitter.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Connection:
+      - close
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '153'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Fri, 08 Jan 2021 16:03:31 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Fri, 08 Jan 2021 16:03:31 GMT
+      Ml:
+      - A
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_b
+      Set-Cookie:
+      - guest_id=v1%3A161012181177940893; Max-Age=63072000; Expires=Sun, 08 Jan 2023
+        16:03:31 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - personalization_id="v1_x0YSUsMvKDZI1bzl4SzP9Q=="; Max-Age=63072000; Expires=Sun,
+        08 Jan 2023 16:03:31 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Connection-Hash:
+      - ee2e57ae98d6b498e6d72a925c5b39f8
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - DENY
+      X-Response-Time:
+      - '46'
+      X-Transaction:
+      - 00dc04960091b7f8
+      X-Tsa-Request-Body-Time:
+      - '1'
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Ua-Compatible:
+      - IE=edge,chrome=1
+      X-Xss-Protection:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '{"token_type":"bearer","access_token":"<RAUTH>"}'
+  recorded_at: Fri, 08 Jan 2021 16:03:31 GMT
+- request:
+    method: get
+    uri: https://api.twitter.com/1.1/statuses/user_timeline.json?count=3&exclude_replies=true&include_rts&screen_name=boredelonmusk
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      User-Agent:
+      - TwitterRubyGem/7.0.0
+      Authorization:
+      - Bearer <AUTH>
+      Connection:
+      - close
+      Host:
+      - api.twitter.com
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Cache-Control:
+      - no-cache, no-store, must-revalidate, pre-check=0, post-check=0
+      Connection:
+      - close
+      Content-Disposition:
+      - attachment; filename=json.json
+      Content-Length:
+      - '7162'
+      Content-Type:
+      - application/json;charset=utf-8
+      Date:
+      - Fri, 08 Jan 2021 16:03:32 GMT
+      Expires:
+      - Tue, 31 Mar 1981 05:00:00 GMT
+      Last-Modified:
+      - Fri, 08 Jan 2021 16:03:32 GMT
+      Pragma:
+      - no-cache
+      Server:
+      - tsa_b
+      Set-Cookie:
+      - guest_id=v1%3A161012181199397641; Max-Age=63072000; Expires=Sun, 08 Jan 2023
+        16:03:32 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      - personalization_id="v1_6T/AwpqME3AXkWJ79rbB1A=="; Max-Age=63072000; Expires=Sun,
+        08 Jan 2023 16:03:32 GMT; Path=/; Domain=.twitter.com; Secure; SameSite=None
+      Status:
+      - 200 OK
+      Strict-Transport-Security:
+      - max-age=631138519
+      X-Access-Level:
+      - read
+      X-App-Rate-Limit-Limit:
+      - '100000'
+      X-App-Rate-Limit-Remaining:
+      - '99918'
+      X-App-Rate-Limit-Reset:
+      - '1610123350'
+      X-Connection-Hash:
+      - a164517dfa4b210caf7bf849ac7d4d93
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Rate-Limit-Limit:
+      - '1500'
+      X-Rate-Limit-Remaining:
+      - '1499'
+      X-Rate-Limit-Reset:
+      - '1610122711'
+      X-Response-Time:
+      - '37'
+      X-Transaction:
+      - '008812a1004128b4'
+      X-Twitter-Response-Tags:
+      - BouncerCompliant
+      X-Xss-Protection:
+      - '0'
+    body:
+      encoding: UTF-8
+      string: '[{"created_at":"Fri Jan 08 01:53:08 +0000 2021","id":1347360658006843394,"id_str":"1347360658006843394","text":"Life
+        on Mars https:\/\/t.co\/K0KXfxJhRy","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[{"url":"https:\/\/t.co\/K0KXfxJhRy","expanded_url":"https:\/\/medium.com\/@boredelonmusk\/life-on-mars-3d985e6fc0f0","display_url":"medium.com\/@boredelonmusk\u2026","indices":[13,36]}]},"source":"\u003ca
+        href=\"https:\/\/mobile.twitter.com\" rel=\"nofollow\"\u003eTwitter Web App\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":1666038950,"id_str":"1666038950","name":"Bored
+        Elon Musk","screen_name":"BoredElonMusk","location":"Mars","description":"Thoughts
+        and inventions from Elon in his downtime. This is a futuristic hyper PARODY
+        account.\ud83d\ude80 XLM supporter.","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":1700595,"friends_count":2160,"listed_count":3133,"created_at":"Mon
+        Aug 12 21:08:31 +0000 2013","favourites_count":14014,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1720,"lang":null,"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"000000","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/378800000305778238\/852d2f76797dbe1da82095f988d38fbe_normal.png","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/378800000305778238\/852d2f76797dbe1da82095f988d38fbe_normal.png","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/1666038950\/1402403530","profile_link_color":"01080A","profile_sidebar_border_color":"000000","profile_sidebar_fill_color":"000000","profile_text_color":"000000","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":null,"follow_request_sent":null,"notifications":null,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":50,"favorite_count":385,"favorited":false,"retweeted":false,"possibly_sensitive":false,"lang":"en"},{"created_at":"Thu
+        Jan 07 23:33:52 +0000 2021","id":1347325612311027713,"id_str":"1347325612311027713","text":"Is
+        it gaudy to encrust an entire planet with diamonds? Asking for a friend.","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[]},"source":"\u003ca
+        href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\"\u003eTwitter
+        for iPhone\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":1666038950,"id_str":"1666038950","name":"Bored
+        Elon Musk","screen_name":"BoredElonMusk","location":"Mars","description":"Thoughts
+        and inventions from Elon in his downtime. This is a futuristic hyper PARODY
+        account.\ud83d\ude80 XLM supporter.","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":1700595,"friends_count":2160,"listed_count":3133,"created_at":"Mon
+        Aug 12 21:08:31 +0000 2013","favourites_count":14014,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1720,"lang":null,"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"000000","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/378800000305778238\/852d2f76797dbe1da82095f988d38fbe_normal.png","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/378800000305778238\/852d2f76797dbe1da82095f988d38fbe_normal.png","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/1666038950\/1402403530","profile_link_color":"01080A","profile_sidebar_border_color":"000000","profile_sidebar_fill_color":"000000","profile_text_color":"000000","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":null,"follow_request_sent":null,"notifications":null,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":40,"favorite_count":889,"favorited":false,"retweeted":false,"lang":"en"},{"created_at":"Thu
+        Jan 07 16:14:58 +0000 2021","id":1347215156732858368,"id_str":"1347215156732858368","text":"The
+        only real currency is energy. Everything else is for buying cheeseburgers,
+        toothpaste and politicians.","truncated":false,"entities":{"hashtags":[],"symbols":[],"user_mentions":[],"urls":[]},"source":"\u003ca
+        href=\"http:\/\/twitter.com\/download\/iphone\" rel=\"nofollow\"\u003eTwitter
+        for iPhone\u003c\/a\u003e","in_reply_to_status_id":null,"in_reply_to_status_id_str":null,"in_reply_to_user_id":null,"in_reply_to_user_id_str":null,"in_reply_to_screen_name":null,"user":{"id":1666038950,"id_str":"1666038950","name":"Bored
+        Elon Musk","screen_name":"BoredElonMusk","location":"Mars","description":"Thoughts
+        and inventions from Elon in his downtime. This is a futuristic hyper PARODY
+        account.\ud83d\ude80 XLM supporter.","url":null,"entities":{"description":{"urls":[]}},"protected":false,"followers_count":1700595,"friends_count":2160,"listed_count":3133,"created_at":"Mon
+        Aug 12 21:08:31 +0000 2013","favourites_count":14014,"utc_offset":null,"time_zone":null,"geo_enabled":false,"verified":false,"statuses_count":1720,"lang":null,"contributors_enabled":false,"is_translator":false,"is_translation_enabled":false,"profile_background_color":"000000","profile_background_image_url":"http:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_image_url_https":"https:\/\/abs.twimg.com\/images\/themes\/theme1\/bg.png","profile_background_tile":false,"profile_image_url":"http:\/\/pbs.twimg.com\/profile_images\/378800000305778238\/852d2f76797dbe1da82095f988d38fbe_normal.png","profile_image_url_https":"https:\/\/pbs.twimg.com\/profile_images\/378800000305778238\/852d2f76797dbe1da82095f988d38fbe_normal.png","profile_banner_url":"https:\/\/pbs.twimg.com\/profile_banners\/1666038950\/1402403530","profile_link_color":"01080A","profile_sidebar_border_color":"000000","profile_sidebar_fill_color":"000000","profile_text_color":"000000","profile_use_background_image":false,"has_extended_profile":false,"default_profile":false,"default_profile_image":false,"following":null,"follow_request_sent":null,"notifications":null,"translator_type":"none"},"geo":null,"coordinates":null,"place":null,"contributors":null,"is_quote_status":false,"retweet_count":284,"favorite_count":2988,"favorited":false,"retweeted":false,"lang":"en"}]'
+  recorded_at: Fri, 08 Jan 2021 16:03:32 GMT
+recorded_with: VCR 6.0.0
