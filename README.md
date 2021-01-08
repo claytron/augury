@@ -16,20 +16,20 @@ As per <a href="https://en.wikipedia.org/wiki/Augury">Wikipedia</a>
 There are a lot of really funny twitter accounts out there.
 Let's just pick one and get started.
 
-```
+```sh
 $ augury generate seinfeldtoday
 ```
 
 This just created the fortune files in the current directory:
 
-```
+```sh
 $ ls
 seinfeldtoday seinfeldtoday.dat
 ```
 
 You can now read the new fortunes!
 
-```
+```sh
 $ fortune seinfeldtoday
 Elaine has no idea what her BF does for a living and it's now too
 late to ask. E:"Teacher, I think. Or a doctor? Wait Is
@@ -55,13 +55,13 @@ gem 'augury'
 
 And then execute:
 
-```
+```sh
 $ bundle
 ```
 
 Or install it yourself as:
 
-```
+```sh
 $ gem install augury
 ```
 
@@ -73,7 +73,7 @@ The fortune program ships with a `strfile` program that converts the plain text 
 For example,
 if you are using Homebrew on OS X:
 
-```
+```sh
 $ brew install fortune
 ```
 
@@ -126,26 +126,26 @@ twitter:
 
 Create a fortune for the latest *seinfeldtoday* tweets.
 
-```
+```sh
 $ augury generate seinfeldtoday
 ```
 
 Now you have some fortunes.
 
-```
+```sh
 $ fortune seinfeldtoday
 ```
 
 Specify a width and a different path to use:
 
-```
+```sh
 $ augury generate -w 120 seinfeldtoday /usr/local/share/games/fortune/Modern\ Seinfeld
 ```
 
 If this is where your fortune program looks for fortunes,
 you can now use the new fortune.
 
-```
+```sh
 $ fortune "Modern Seinfeld"
 ```
 
@@ -153,9 +153,9 @@ $ fortune "Modern Seinfeld"
 
 Run the help to get more details about what the program can do
 
-```
-$ bin/augury help
-$ bin/augury help generate
+```sh
+$ augury help
+$ augury help generate
 ```
 
 ## Development
@@ -165,7 +165,7 @@ do the following.
 
 Create a fork, then get the code
 
-```
+```sh
 $ git clone git@github.com:YOUR_USERNAME/augury.git
 $ cd augury
 ```
@@ -175,29 +175,29 @@ Run the setup script to get everything installed:
 **NOTE**: This requires having bundler available.
 That is beyond the scope of this README.
 
-```
+```sh
 $ bin/setup
 ```
 
 Once that is finished, there is a console available.
 This gives you access to all the code via Pry.
 
-```
+```sh
 $ bin/console
 ```
 
-The `augury` command will be available in bin:
+The `augury` command will be available in `exe`:
 
-```
-$ bin/augury help
+```sh
+$ bundle exec ruby exe/augury help
 ```
 
 ### Run the tests
 
 You can run the tests with the rake task:
 
-```
-$ rake spec
+```sh
+$ bundle exec rake spec
 ```
 
 ## Contributing

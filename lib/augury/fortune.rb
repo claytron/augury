@@ -11,7 +11,7 @@ module Augury
       @config = config
     end
 
-    def collect_with_max_id(collection=[], max_id=nil, &block)
+    def collect_with_max_id(collection = [], max_id = nil, &block)
       response = yield(max_id)
       collection += response
       if response.empty?
@@ -39,20 +39,19 @@ module Augury
     end
 
     def format_fortune
-      tweet_texts = self.tweets.flat_map { |tweet| tweet.full_text }
+      tweet_texts = self.tweets.flat_map(&:full_text)
       tweet_texts.flat_map { |tweet| tweet.word_wrap(@config[:width]) }.join("%\n")
     end
 
     def write_fortune
-      text = self.format_fortune
       # Write out the file
       begin
         mode = @config[:append] ? 'a' : 'w'
         file = File.open(@path, mode)
-        file.write(text)
         file.write("%\n") if @config[:append]
+        file.write(format_fortune)
       ensure
-        file.close unless file.nil?
+        file&.close
       end
       # Create the dat file too
       `strfile '#{@path}' '#{@path}.dat'`
