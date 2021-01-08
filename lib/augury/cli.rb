@@ -38,6 +38,11 @@ module Augury
       aliases: '-l',
       desc: 'Include tweets with links in them. DEFAULT: false'
 
+    option :attribution,
+      type: :boolean,
+      aliases: '-A',
+      desc: 'Add an author attribution to each fortune. DEFAULT: false'
+
     def generate(username, *path)
       path = File.expand_path(path[0] || username)
       augury = Augury::Fortune.new(username, path, options)
@@ -63,6 +68,7 @@ module Augury
           retweets: false,
           replies: false,
           links: false,
+          attribution: false,
         },
       )
 

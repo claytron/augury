@@ -107,6 +107,7 @@ Option | Description | Default
 `retweets` | Include retweets. | `false`
 `replies` | Include replies. | `false`
 `links` | Include tweets with links in them. | `false`
+`attribution` | Add an author attribution to each fortune. | `false`
 
 ### Twitter Setup
 

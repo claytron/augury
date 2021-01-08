@@ -45,7 +45,8 @@ module Augury
         tweet.match(/https?:/) unless @config[:links]
       end
       formatted = filtered.flat_map { |tweet| tweet.word_wrap(@config[:width]) }
-      formatted.join("%\n")
+      author = @config[:attribution] ? "\n-- #{@twitter.user(@username).name}\n" : ''
+      formatted.join("#{author}%\n")
     end
 
     def write_fortune
