@@ -1,5 +1,9 @@
 # Changes
 
+## 1.0.1 (2020-01-08)
+
+- Remove unused gem
+
 ## 1.0.0 (2020-01-08)
 
 - Convert augury config from ini style to yaml (breaking change)
