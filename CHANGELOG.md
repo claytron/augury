@@ -1,5 +1,9 @@
 # Changes
 
+## 1.0.0 (2020-01-08)
+
+- Convert augury config from ini style to yaml (breaking change)
+
 ## 0.3.0 (2015-08-20)
 
 - Add `count` option and allow for a user to get all tweets

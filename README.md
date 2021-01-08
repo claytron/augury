@@ -90,14 +90,14 @@ $ chmod 600 ~/.augury.cfg
 
 Set any of these settings in the `augury` section of the config like this:
 
-```ini
-[augury]
-example_option = "An interesting value"
+```yaml
+count: 20
+attribution: true
 ```
 
 ### Option list
 
-These are the available options for the `~/.augury.cfg`
+These are the available options for the `~/.augury.yml` config file.
 
 Option | Description | Default
 ------ | :---------- | -------
@@ -112,14 +112,14 @@ https://apps.twitter.com
 
 This will give you the ability to generate the consumer and access information used below.
 
-Add the following to your `~/.augury.cfg` file.
+Add the following to your `~/.augury.yml` config.
 
-```ini
-[twitter]
-consumer_key = "YOUR_CONSUMER_KEY"
-consumer_secret = "YOUR_CONSUMER_SECRET"
-access_token = "YOUR_ACCESS_TOKEN"
-access_token_secret = "YOUR_ACCESS_SECRET"
+```yaml
+twitter:
+  consumer_key: YOUR_CONSUMER_KEY
+  consumer_secret: YOUR_CONSUMER_SECRET
+  access_token: YOUR_ACCESS_TOKEN
+  access_token_secret: YOUR_ACCESS_TOKEN_SECRET
 ```
 
 ## Usage

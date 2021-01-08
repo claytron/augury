@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'thor'
+require 'yaml'
 require 'augury'
 
 module Augury
@@ -18,13 +19,8 @@ module Augury
     def generate(username, *path)
       begin
         path = File.expand_path(path[0] || username)
-          augury = Augury::Fortune.new(
-            username,
-            path,
-            options['width'],
-            options['append'],
-            options['count'],
-          )
+        augury = Augury::Fortune.new(username, path, options)
+        augury.twitter_setup
         augury.write_fortune
         self.say "Fortune written out to #{path}"
       rescue => e
@@ -32,6 +28,27 @@ module Augury
         self.say e.message
         exit 1
       end
+    end
+
+    private
+
+    def options
+      original_options = super
+      defaults = Thor::CoreExt::HashWithIndifferentAccess.new(
+        {
+          width: 72,
+          append: false,
+          count: 200,
+        },
+      )
+
+      config_path = File.expand_path('~/.augury.yml')
+      if File.file?(config_path)
+        config_options = Thor::CoreExt::HashWithIndifferentAccess.new(YAML.load_file(config_path) || {})
+        defaults = defaults.merge(config_options)
+      end
+
+      Thor::CoreExt::HashWithIndifferentAccess.new(defaults.merge(original_options))
     end
   end
 end
