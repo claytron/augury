@@ -1,5 +1,9 @@
 # Changes
 
+## 1.0.2 (2020-01-09)
+
+- Fix bug with specific tweet count retrieval
+
 ## 1.0.1 (2020-01-08)
 
 - Remove unused gem

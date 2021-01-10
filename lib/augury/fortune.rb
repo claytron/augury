@@ -17,23 +17,24 @@ module Augury
       response = yield(max_id)
       collection += response
       if response.empty?
-        collection.flatten
+        collection
       elsif !@config[:count].zero? && collection.length >= @config[:count]
-        collection.flatten
+        # Get everything or trim the results to the count
+        @config[:count].zero? ? collection : collection[0..@config[:count] - 1]
       else
         collect_with_max_id(collection, response.last.id - 1, &block)
       end
     end
 
     def retrieve_tweets
-      collect_with_max_id do |max_id|
+      @tweets = collect_with_max_id do |max_id|
         options = {
-          count: @config[:count].zero? ? 200 : @config[:count],
+          count: 200,
           include_rts: @config[:retweets],
           exclude_replies: !@config[:replies],
         }
         options[:max_id] = max_id unless max_id.nil?
-        @tweets = @twitter.user_timeline(@username, options)
+        @twitter.user_timeline(@username, options)
       end
     rescue Twitter::Error::TooManyRequests => e
       reset_length = e.rate_limit.reset_in + 1

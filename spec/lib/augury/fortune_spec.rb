@@ -22,6 +22,23 @@ describe Augury::Fortune do
       }
     end
 
+    it 'fetches all for user', :vcr do
+      config = twitter_auth.merge({ count: 0, replies: true, retweets: true, links: true })
+      augury = Augury::Fortune.new('seinfeldtoday', 'seinfeldtoday', config)
+      augury.twitter_setup
+      tweets = augury.retrieve_tweets
+      # Twitter UI says 510, not sure what I'm missing...
+      expect(tweets.count).to eq 506
+    end
+
+    it 'fetches 300 for user', :vcr do
+      config = twitter_auth.merge({ count: 300 })
+      augury = Augury::Fortune.new('seinfeldtoday', 'seinfeldtoday', config)
+      augury.twitter_setup
+      tweets = augury.retrieve_tweets
+      expect(tweets.count).to eq 300
+    end
+
     it 'writes to filesystem', :vcr do
       config = twitter_auth.merge({ count: 3 })
       augury = Augury::Fortune.new('boredelonmusk', "#{output_dir}/boredelonmusk", config)
