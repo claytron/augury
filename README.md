@@ -201,7 +201,7 @@ $ bundle exec ruby exe/augury help
 You can run the tests with the rake task:
 
 ```sh
-$ bundle exec spec
+$ bundle exec rspec
 ```
 
 #### Twitter ENV
