@@ -55,9 +55,11 @@ describe Augury::Fortune do
       augury.twitter_setup
       augury.retrieve_tweets
       augury.write_fortune
-      output, res = Open3.capture2('fortune', "#{output_dir}/drunkhulk")
-      expect(res.success?)
-      expect(output).to eq "FUCK THIS!\n"
+      stdout, stderr, status = Open3.capture3('fortune', "#{output_dir}/drunkhulk")
+      expect(stderr).not_to eq "No fortunes found\n"
+      expect(status.success?).to be
+      # Ensure that fortunes are being output
+      expect(stdout.empty?).not_to be
     end
   end
 end
