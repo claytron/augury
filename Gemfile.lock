@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    augury (1.0.1)
+    augury (1.0.2)
       facets (~> 3.0)
       thor (~> 1.0)
       twitter (~> 7.0)
