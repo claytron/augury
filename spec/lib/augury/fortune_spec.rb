@@ -5,10 +5,10 @@ require 'open3'
 
 describe Augury::Fortune do
   context 'fortune' do
+    let(:output_dir) { Dir.mktmpdir('augury-tests-') }
+
     after do
-      # TODO: better handling of tmp files
-      File.delete('/tmp/boredelonmusk', '/tmp/boredelonmusk.dat') if File.exist? '/tmp/boredelonmusk'
-      File.delete('/tmp/drunkhulk', '/tmp/drunkhulk.dat') if File.exist? '/tmp/drunkhulk'
+      FileUtils.rm_rf(output_dir)
     end
 
     let(:twitter_auth) do
@@ -24,25 +24,25 @@ describe Augury::Fortune do
 
     it 'writes to filesystem' do
       config = twitter_auth.merge({ count: 3 })
-      augury = Augury::Fortune.new('boredelonmusk', '/tmp/boredelonmusk', config)
+      augury = Augury::Fortune.new('boredelonmusk', "#{output_dir}/boredelonmusk", config)
       augury.twitter_setup
       VCR.use_cassette('twitter_count_3') do
         augury.retrieve_tweets
       end
       augury.write_fortune
-      expect(File).to exist('/tmp/boredelonmusk')
-      expect(File).to exist('/tmp/boredelonmusk.dat')
+      expect(File).to exist("#{output_dir}/boredelonmusk")
+      expect(File).to exist("#{output_dir}/boredelonmusk.dat")
     end
 
     it 'outputs' do
       config = twitter_auth.merge({ count: 1 })
-      augury = Augury::Fortune.new('drunkhulk', '/tmp/drunkhulk', config)
+      augury = Augury::Fortune.new('drunkhulk', "#{output_dir}/drunkhulk", config)
       augury.twitter_setup
       VCR.use_cassette('twitter_count_1') do
         augury.retrieve_tweets
       end
       augury.write_fortune
-      output, res = Open3.capture2('fortune', '/tmp/drunkhulk')
+      output, res = Open3.capture2('fortune', "#{output_dir}/drunkhulk")
       expect(res.success?)
       expect(output).to eq "FUCK THIS!\n"
     end
