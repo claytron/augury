@@ -17,6 +17,7 @@ gem 'webmock'
 gem 'pry'
 gem 'pry-awesome_print'
 gem 'pry-byebug'
+gem 'pry-doc'
 
 # Linting / completion
 gem 'rubocop', '0.92'
