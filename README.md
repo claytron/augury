@@ -201,7 +201,21 @@ $ bundle exec ruby exe/augury help
 You can run the tests with the rake task:
 
 ```sh
-$ bundle exec rake spec
+$ bundle exec spec
+```
+
+#### Twitter ENV
+
+If you need to record a test with the Twitter API, you can set up the proper env vars by getting them from your currently set up `augury.yml` file.
+
+```sh
+$ eval `bin/extract_creds`
+```
+
+Then run the tests as you normally would.
+
+```sh
+$ bundle exec rspec
 ```
 
 ## Contributing

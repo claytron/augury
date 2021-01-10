@@ -5,10 +5,10 @@ require 'open3'
 
 describe Augury::Fortune do
   context 'fortune' do
+    let(:output_dir) { Dir.mktmpdir('augury-tests-') }
+
     after do
-      # TODO: better handling of tmp files
-      File.delete('/tmp/boredelonmusk', '/tmp/boredelonmusk.dat') if File.exist? '/tmp/boredelonmusk'
-      File.delete('/tmp/drunkhulk', '/tmp/drunkhulk.dat') if File.exist? '/tmp/drunkhulk'
+      FileUtils.rm_rf(output_dir)
     end
 
     let(:twitter_auth) do
@@ -22,27 +22,40 @@ describe Augury::Fortune do
       }
     end
 
-    it 'writes to filesystem' do
-      config = twitter_auth.merge({ count: 3 })
-      augury = Augury::Fortune.new('boredelonmusk', '/tmp/boredelonmusk', config)
+    it 'fetches all for user', :vcr do
+      config = twitter_auth.merge({ count: 0, replies: true, retweets: true, links: true })
+      augury = Augury::Fortune.new('seinfeldtoday', 'seinfeldtoday', config)
       augury.twitter_setup
-      VCR.use_cassette('twitter_count_3') do
-        augury.retrieve_tweets
-      end
-      augury.write_fortune
-      expect(File).to exist('/tmp/boredelonmusk')
-      expect(File).to exist('/tmp/boredelonmusk.dat')
+      tweets = augury.retrieve_tweets
+      # Twitter UI says 510, not sure what I'm missing...
+      expect(tweets.count).to eq 506
     end
 
-    it 'outputs' do
-      config = twitter_auth.merge({ count: 1 })
-      augury = Augury::Fortune.new('drunkhulk', '/tmp/drunkhulk', config)
+    it 'fetches 300 for user', :vcr do
+      config = twitter_auth.merge({ count: 300 })
+      augury = Augury::Fortune.new('seinfeldtoday', 'seinfeldtoday', config)
       augury.twitter_setup
-      VCR.use_cassette('twitter_count_1') do
-        augury.retrieve_tweets
-      end
+      tweets = augury.retrieve_tweets
+      expect(tweets.count).to eq 300
+    end
+
+    it 'writes to filesystem', :vcr do
+      config = twitter_auth.merge({ count: 3 })
+      augury = Augury::Fortune.new('boredelonmusk', "#{output_dir}/boredelonmusk", config)
+      augury.twitter_setup
+      augury.retrieve_tweets
       augury.write_fortune
-      output, res = Open3.capture2('fortune', '/tmp/drunkhulk')
+      expect(File).to exist("#{output_dir}/boredelonmusk")
+      expect(File).to exist("#{output_dir}/boredelonmusk.dat")
+    end
+
+    it 'outputs', :vcr do
+      config = twitter_auth.merge({ count: 1 })
+      augury = Augury::Fortune.new('drunkhulk', "#{output_dir}/drunkhulk", config)
+      augury.twitter_setup
+      augury.retrieve_tweets
+      augury.write_fortune
+      output, res = Open3.capture2('fortune', "#{output_dir}/drunkhulk")
       expect(res.success?)
       expect(output).to eq "FUCK THIS!\n"
     end

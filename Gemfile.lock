@@ -69,6 +69,9 @@ GEM
     pry-byebug (3.9.0)
       byebug (~> 11.0)
       pry (~> 0.13.0)
+    pry-doc (1.1.0)
+      pry (~> 0.11)
+      yard (~> 0.9.11)
     public_suffix (4.0.6)
     racc (1.5.2)
     rainbow (3.0.0)
@@ -161,6 +164,7 @@ DEPENDENCIES
   pry
   pry-awesome_print
   pry-byebug
+  pry-doc
   rake
   rspec (~> 3.0)
   rubocop (= 0.92)

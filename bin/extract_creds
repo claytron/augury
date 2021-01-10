@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require 'yaml'
+
+augury_config = YAML.load_file(File.expand_path('~/.augury.yml'))
+puts augury_config['twitter'].collect { |k, v| "export TWITTER_#{k.upcase}=#{v}" }.join("\n")
