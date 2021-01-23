@@ -3,5 +3,10 @@
 
 require 'yaml'
 
-augury_config = YAML.load_file(File.expand_path('~/.augury.yml'))
-puts augury_config['twitter'].collect { |k, v| "export TWITTER_#{k.upcase}=#{v}" }.join("\n")
+begin
+  augury_config = YAML.load_file(File.expand_path('~/.augury.yml'))
+  puts augury_config['twitter'].collect { |k, v| "export TWITTER_#{k.upcase}=#{v}" }.join("\n")
+rescue Errno::ENOENT
+  puts 'echo "No config file present (~/.augury.yml) no env vars set"'
+  exit 1
+end
