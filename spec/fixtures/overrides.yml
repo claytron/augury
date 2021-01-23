@@ -1,0 +1,7 @@
+width: 500
+append: true
+count: 0
+retweets: true
+replies: true
+links: true
+attribution: true

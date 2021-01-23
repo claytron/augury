@@ -72,7 +72,7 @@ module Augury
         },
       )
 
-      config_path = File.expand_path('~/.augury.yml')
+      config_path = File.expand_path(ENV.fetch('AUGURY_CFG_PATH', '~/.augury.yml'))
       if File.file?(config_path)
         config_options = Thor::CoreExt::HashWithIndifferentAccess.new(YAML.load_file(config_path) || {})
         defaults = defaults.merge(config_options)
