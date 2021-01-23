@@ -3,7 +3,7 @@ PATH
   specs:
     augury (1.0.2)
       facets (~> 3.0)
-      thor (~> 1.0)
+      thor (~> 1.0.0)
       twitter (~> 7.0)
 
 GEM

@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   # Actual dependencies
-  spec.add_dependency 'thor', '~>1.0'
+  spec.add_dependency 'thor', '~>1.0.0'
   spec.add_dependency 'twitter', '~>7.0'
   ## For the word_wrap function
   spec.add_dependency 'facets', '~>3.0'
