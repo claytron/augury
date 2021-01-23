@@ -1,5 +1,10 @@
 # Changes
 
+## 1.0.3 (2020-01-23)
+
+- Pin Thor version to avoid issue with `options` override
+- Add tests for `Augury::CLI`
+
 ## 1.0.2 (2020-01-09)
 
 - Fix bug with specific tweet count retrieval
