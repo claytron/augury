@@ -23,5 +23,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency 'thor', '~>1.0.0'
   spec.add_dependency 'twitter', '~>7.0'
   ## For the word_wrap function
-  spec.add_dependency 'facets', '~>3.0'
+  spec.add_dependency 'word_wrap', '~>1.0'
 end
