@@ -30,6 +30,7 @@ module Augury
       @tweets = collect_with_max_id do |max_id|
         options = {
           count: 200,
+          tweet_mode: 'extended',
           include_rts: @config[:retweets],
           exclude_replies: !@config[:replies],
         }
