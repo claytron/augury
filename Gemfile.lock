@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    augury (1.0.2)
+    augury (1.0.3)
       facets (~> 3.0)
       thor (~> 1.0.0)
       twitter (~> 7.0)
@@ -40,8 +40,8 @@ GEM
     http-cookie (1.0.3)
       domain_name (~> 0.5)
     http-form_data (2.3.0)
-    http-parser (1.2.2)
-      ffi-compiler
+    http-parser (1.2.3)
+      ffi-compiler (>= 1.0, < 2.0)
     http_parser.rb (0.6.0)
     jaro_winkler (1.5.4)
     kramdown (2.3.0)
