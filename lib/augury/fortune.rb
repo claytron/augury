@@ -47,7 +47,14 @@ module Augury
       filtered = @tweets.flat_map(&:full_text).reject do |tweet|
         tweet.match(/https?:/) unless @config[:links]
       end
-      formatted = filtered.flat_map { |tweet| WordWrap.ww CGI.unescapeHTML(tweet), @config.fetch(:width, 72) }
+      to_transform = transforms
+      formatted = filtered.flat_map do |tweet|
+        text = CGI.unescapeHTML(tweet)
+        to_transform.each do |transform|
+          text.gsub!(transform[0], transform[1])
+        end
+        WordWrap.ww text, @config.fetch(:width, 72)
+      end
       author = @config[:attribution] ? "\n-- #{@twitter.user(@username).name}\n" : ''
       formatted.join("#{author}%\n")
     end
@@ -74,6 +81,29 @@ module Augury
         cfg.consumer_secret = @config[:twitter]['consumer_secret']
         cfg.access_token = @config[:twitter]['access_token']
         cfg.access_token_secret = @config[:twitter]['access_token_secret']
+      end
+    end
+
+    private
+
+    def transforms
+      all_transforms = []
+      all_transforms << [/https?:\/\/[^\s]+/, ''] if @config[:remove_links]
+      return all_transforms unless @config[:apply_transforms]
+
+      all_transforms.push(*@config.dig('transforms', @username) || [])
+      all_transforms.push(*@config.fetch('global-transforms', []))
+
+      raise Augury::TransformError unless validate_transforms(all_transforms)
+
+      all_transforms
+    end
+
+    def validate_transforms(all_transforms)
+      all_transforms.all? do |transform|
+        transform.count == 2 &&
+          [String, Regexp].include?(transform[0].class) &&
+          transform[1].is_a?(String)
       end
     end
   end

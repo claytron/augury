@@ -72,5 +72,25 @@ describe Augury::CLI do
         },
       )
     end
+
+    it 'sets links if remove_links is set' do
+      ENV['AUGURY_CFG_PATH'] = '/nil'
+      expect(Augury::CLI.new([], remove_links: true).send(:options)).to include(
+        {
+          'remove_links' => true,
+          'links' => true,
+        },
+      )
+    end
+
+    it 'sets links if remove_links is set in config' do
+      ENV['AUGURY_CFG_PATH'] = 'spec/fixtures/remove_links.yml'
+      expect(subject.send(:options)).to include(
+        {
+          'remove_links' => true,
+          'links' => true,
+        },
+      )
+    end
   end
 end
