@@ -1,5 +1,11 @@
 # Changes
 
+## 1.1.0 (2020-01-24)
+
+- Add ability to transform tweet text with find / replace
+- Get full text of tweets, not the default abbreviated version
+- Switch to better word wrapping library
+
 ## 1.0.3 (2020-01-23)
 
 - Pin Thor version to avoid issue with `options` override
