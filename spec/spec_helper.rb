@@ -16,6 +16,9 @@ VCR.configure do |config|
   config.cassette_library_dir = 'spec/cassettes'
   config.hook_into :webmock
   config.configure_rspec_metadata!
+  config.default_cassette_options = {
+    record: ENV['VCR_RECORD'] ? :new_episodes : :once,
+  }
 
   # Remove auth info from cassettes
   config.filter_sensitive_data('<AUTH>') do |interaction|

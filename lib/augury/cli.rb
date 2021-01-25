@@ -16,7 +16,7 @@ module Augury
     option :append,
       type: :boolean,
       aliases: '-a',
-      desc: 'If set, the target path will be appended to instead of overwritten'
+      desc: 'If set, the target path will be appended to instead of overwritten. DEFAULT: false'
 
     option :count,
       type: :numeric,
@@ -38,10 +38,20 @@ module Augury
       aliases: '-l',
       desc: 'Include tweets with links in them. DEFAULT: false'
 
+    option :remove_links,
+      type: :boolean,
+      aliases: '--remove-links',
+      desc: 'Remove links from tweets. DEFAULT: false'
+
     option :attribution,
       type: :boolean,
       aliases: '-A',
       desc: 'Add an author attribution to each fortune. DEFAULT: false'
+
+    option :apply_transforms,
+      type: :boolean,
+      aliases: '-t',
+      desc: 'Apply transforms from config file. DEFAULT: false'
 
     def generate(username, *path)
       path = File.expand_path(path[0] || username)
@@ -63,12 +73,7 @@ module Augury
       defaults = Thor::CoreExt::HashWithIndifferentAccess.new(
         {
           width: 72,
-          append: false,
           count: 200,
-          retweets: false,
-          replies: false,
-          links: false,
-          attribution: false,
         },
       )
 
@@ -77,6 +82,9 @@ module Augury
         config_options = Thor::CoreExt::HashWithIndifferentAccess.new(YAML.load_file(config_path) || {})
         defaults = defaults.merge(config_options)
       end
+
+      # Enforce implied options
+      defaults[:links] = true if original_options[:remove_links] || defaults[:remove_links]
 
       Thor::CoreExt::HashWithIndifferentAccess.new(defaults.merge(original_options))
     end

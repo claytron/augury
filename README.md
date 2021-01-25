@@ -107,7 +107,11 @@ Option | Description | Default
 `retweets` | Include retweets. | `false`
 `replies` | Include replies. | `false`
 `links` | Include tweets with links in them. | `false`
+`remove_links` | Remove all links from tweets before any other `transforms`. If set, this infers `links` is `true`. | `false`
 `attribution` | Add an author attribution to each fortune. | `false`
+`apply_transforms` | Apply the global and feed specific transforms. | `false`
+`transforms` | Transformations to apply to specific user feeds. See [Transforms](#transforms) below. |
+`global-transforms` | Transformations to apply to all feeds. Applied after `transforms` See [Transforms](#transforms) below. |
 
 ### Twitter Setup
 
@@ -124,6 +128,65 @@ twitter:
   consumer_secret: YOUR_CONSUMER_SECRET
   access_token: YOUR_ACCESS_TOKEN
   access_token_secret: YOUR_ACCESS_TOKEN_SECRET
+```
+
+### Transforms
+
+Global substitutions can be made using regular expressions.
+Each transform is a pattern and replacement.
+For instance, if you wanted to replace all `Hello`'s with `Hello world`, you could add the following:
+
+```yaml
+global-transforms:
+  -
+    - !ruby/regexp /(hello)/i
+    - "\\1 world"
+```
+
+Global transforms are applied after all other `transforms`.
+Word wrapping is applied after the transforms have been applied.
+
+#### Feed specific
+
+Transforms can also be defined per user feed.
+If you wanted to do the same as the global above, but only for `seinfeldtoday`, then add the following:
+
+```yaml
+transforms:
+  seinfeldtoday:
+    -
+      - !ruby/regexp /(hello)/i
+      - "\\1 world"
+```
+
+Or a more interesting example using the example earlier for `seinfeldtoday`:
+
+```text
+Elaine has no idea what her BF does for a living and it's now too
+late to ask. E:"Teacher, I think. Or a doctor? Wait Is
+'computers' a job?"
+```
+
+Then add the following to make this a bit more readable:
+
+```yaml
+transforms:
+  seinfeldtoday:
+    -
+      - !ruby/regexp /(E:\s*)/
+      - "\n\nElaine: "
+    -
+      - !ruby/regexp /BF/
+      - "boyfriend"
+```
+
+Then we end up with this:
+
+```text
+Elaine has no idea what her boyfriend does for a living and it's now
+too late to ask.
+
+Elaine: "Teacher, I think. Or a doctor? Wait Is 'computers' a job?"
 ```
 
 ## Usage

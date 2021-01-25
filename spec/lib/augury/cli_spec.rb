@@ -18,27 +18,18 @@ describe Augury::CLI do
       expect(subject.send(:options)).to eq(
         {
           'width' => 72,
-          'append' => false,
           'count' => 200,
-          'retweets' => false,
-          'replies' => false,
-          'links' => false,
-          'attribution' => false,
         },
       )
     end
 
     it 'args override defaults' do
       ENV['AUGURY_CFG_PATH'] = '/nil'
-      expect(Augury::CLI.new([], count: 0, width: 500).send(:options)).to eq(
+      expect(Augury::CLI.new([], count: 0, width: 500, replies: true).send(:options)).to eq(
         {
           'width' => 500,
-          'append' => false,
           'count' => 0,
-          'retweets' => false,
-          'replies' => false,
-          'links' => false,
-          'attribution' => false,
+          'replies' => true,
         },
       )
     end
@@ -69,6 +60,26 @@ describe Augury::CLI do
           'replies' => true,
           'links' => true,
           'attribution' => true,
+        },
+      )
+    end
+
+    it 'sets links if remove_links is set' do
+      ENV['AUGURY_CFG_PATH'] = '/nil'
+      expect(Augury::CLI.new([], remove_links: true).send(:options)).to include(
+        {
+          'remove_links' => true,
+          'links' => true,
+        },
+      )
+    end
+
+    it 'sets links if remove_links is set in config' do
+      ENV['AUGURY_CFG_PATH'] = 'spec/fixtures/remove_links.yml'
+      expect(subject.send(:options)).to include(
+        {
+          'remove_links' => true,
+          'links' => true,
         },
       )
     end
