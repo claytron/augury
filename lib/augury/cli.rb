@@ -16,7 +16,7 @@ module Augury
     option :append,
       type: :boolean,
       aliases: '-a',
-      desc: 'If set, the target path will be appended to instead of overwritten'
+      desc: 'If set, the target path will be appended to instead of overwritten. DEFAULT: false'
 
     option :count,
       type: :numeric,
@@ -73,12 +73,7 @@ module Augury
       defaults = Thor::CoreExt::HashWithIndifferentAccess.new(
         {
           width: 72,
-          append: false,
           count: 200,
-          retweets: false,
-          replies: false,
-          links: false,
-          attribution: false,
         },
       )
 
