@@ -102,6 +102,21 @@ describe Augury::Fortune do
         )
         expect(augury.format_fortune).to eq "This is some text\nthat I want you to\nread\n%\nAnd more\n"
       end
+
+      it 'adds attribution' do
+        config = { attribution: true }
+        augury = Augury::Fortune.new('fake', 'fake', config)
+        twitter_user = double('user', name: 'So Fake')
+        augury.instance_variable_set(:@twitter, double('Twitter::REST::Client', user: twitter_user))
+        augury.instance_variable_set(
+          :@tweets,
+          [
+            double('Twitter::Tweet', full_text: 'Best tweets'),
+            double('Twitter::Tweet', full_text: 'Right here'),
+          ],
+        )
+        expect(augury.format_fortune).to eq "Best tweets\n\n-- So Fake\n%\nRight here\n\n-- So Fake\n"
+      end
     end
   end
 end

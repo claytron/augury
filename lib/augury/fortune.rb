@@ -56,7 +56,8 @@ module Augury
         WordWrap.ww text, @config.fetch(:width, 72)
       end
       author = @config[:attribution] ? "\n-- #{@twitter.user(@username).name}\n" : ''
-      formatted.join("#{author}%\n")
+      text = formatted.join("#{author}%\n")
+      text + author if author
     end
 
     def write_fortune
