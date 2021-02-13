@@ -53,6 +53,11 @@ module Augury
       aliases: '-t',
       desc: 'Apply transforms from config file. DEFAULT: false'
 
+    option :since_id,
+      type: :numeric,
+      aliases: '-s',
+      desc: 'Where to start retrieving tweets in the timeline.'
+
     def generate(username, *path)
       path = File.expand_path(path[0] || username)
       augury = Augury::Fortune.new(username, path, options)

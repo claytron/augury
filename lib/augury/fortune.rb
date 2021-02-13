@@ -13,8 +13,8 @@ module Augury
       @tweets = []
     end
 
-    def collect_with_max_id(collection = [], max_id = nil, &block)
-      response = yield(max_id)
+    def collect_with_id(collection = [], id = nil, &block)
+      response = yield(id)
       collection += response
       if response.empty?
         collection
@@ -22,19 +22,24 @@ module Augury
         # Get everything or trim the results to the count
         @config[:count].zero? ? collection : collection[0..@config[:count] - 1]
       else
-        collect_with_max_id(collection, response.last.id - 1, &block)
+        next_id = response.last.id - 1
+        collect_with_id(collection, next_id, &block)
       end
     end
 
     def retrieve_tweets
-      @tweets = collect_with_max_id do |max_id|
+      @tweets = collect_with_id do |id|
         options = {
           count: 200,
           tweet_mode: 'extended',
           include_rts: @config[:retweets],
           exclude_replies: !@config[:replies],
         }
-        options[:max_id] = max_id unless max_id.nil?
+        if @config[:since_id]
+          options[:since_id] = id || @config[:since_id]
+        else
+          options[:max_id] = id unless id.nil?
+        end
         @twitter.user_timeline(@username, options)
       end
     rescue Twitter::Error::TooManyRequests => e
