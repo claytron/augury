@@ -1,5 +1,11 @@
 # Changes
 
+## 1.1.1 (2020-02-13)
+
+- Fix attribution on last item
+- More test coverage for formatting
+- Add hidden debug option
+
 ## 1.1.0 (2020-01-24)
 
 - Add ability to transform tweet text with find / replace
