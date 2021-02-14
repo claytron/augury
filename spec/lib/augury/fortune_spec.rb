@@ -61,5 +61,47 @@ describe Augury::Fortune do
       # Ensure that fortunes are being output
       expect(stdout.empty?).not_to be
     end
+
+    context 'format_fortune' do
+      it 'removes tweets with links' do
+        config = { links: false }
+        augury = Augury::Fortune.new('fake', 'fake', config)
+        augury.instance_variable_set(
+          :@tweets,
+          [
+            double('Twitter::Tweet', full_text: 'With a link https://google.com'),
+            double('Twitter::Tweet', full_text: 'No link'),
+            double('Twitter::Tweet', full_text: 'More'),
+          ],
+        )
+        expect(augury.format_fortune).to eq "No link\n%\nMore\n"
+      end
+
+      it 'keeps tweets with links' do
+        config = { links: true }
+        augury = Augury::Fortune.new('fake', 'fake', config)
+        augury.instance_variable_set(
+          :@tweets,
+          [
+            double('Twitter::Tweet', full_text: 'With a link https://google.com'),
+            double('Twitter::Tweet', full_text: 'Another https://google.com'),
+          ],
+        )
+        expect(augury.format_fortune).to eq "With a link https://google.com\n%\nAnother https://google.com\n"
+      end
+
+      it 'wraps to width' do
+        config = { width: 20 }
+        augury = Augury::Fortune.new('fake', 'fake', config)
+        augury.instance_variable_set(
+          :@tweets,
+          [
+            double('Twitter::Tweet', full_text: 'This is some text that I want you to read'),
+            double('Twitter::Tweet', full_text: 'And more'),
+          ],
+        )
+        expect(augury.format_fortune).to eq "This is some text\nthat I want you to\nread\n%\nAnd more\n"
+      end
+    end
   end
 end
