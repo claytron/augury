@@ -53,6 +53,11 @@ module Augury
       aliases: '-t',
       desc: 'Apply transforms from config file. DEFAULT: false'
 
+    option :debug,
+      type: :boolean,
+      aliases: '-d',
+      hide: true
+
     def generate(username, *path)
       path = File.expand_path(path[0] || username)
       augury = Augury::Fortune.new(username, path, options)
@@ -63,6 +68,7 @@ module Augury
     rescue StandardError => e
       say 'There was an error running the command. Details below:'
       say e.message
+      puts e.backtrace if options[:debug]
       exit 1
     end
 
