@@ -5,6 +5,8 @@ plugins:
   rubocop:
     enabled: true
     channel: rubocop-0-92
+  markdownlint:
+    enabled: true
   bundler-audit:
     enabled: true
 ratings:
