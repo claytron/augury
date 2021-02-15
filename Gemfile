@@ -20,6 +20,7 @@ gem 'pry-byebug'
 gem 'pry-doc'
 
 # Linting / completion
+gem 'bundler-audit'
 gem 'rubocop', '0.92'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'

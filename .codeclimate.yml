@@ -5,6 +5,8 @@ plugins:
   rubocop:
     enabled: true
     channel: rubocop-0-92
+  bundler-audit:
+    enabled: true
 ratings:
   paths:
   - "**.rb"
