@@ -1,0 +1,7 @@
+# Ignore the following rules
+#
+# MD013: No line length restriction, use Semantic Line Feeds
+#        http://rhodesmill.org/brandon/2012/one-sentence-per-line/
+# MD014: Allow for cli examples to start with dollar sign
+# MD034: Never run into this issue and GitHub supports it fine
+rules "~MD013", "~MD014", "~MD034"

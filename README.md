@@ -7,11 +7,10 @@
 Have you ever wanted to turn a twitter account into a fortune file?
 Well, today is your lucky day!
 
-<blockquote>
-Augury is the practice from ancient Roman religion of<br>
-interpreting omens from the observed flight of birds.<br><br>
-As per <a href="https://en.wikipedia.org/wiki/Augury">Wikipedia</a>
-</blockquote>
+> Augury is the practice from ancient Roman religion of  
+> interpreting omens from the observed flight of birds.
+>
+> As per [Wikipedia](https://en.wikipedia.org/wiki/Augury)
 
 There are a lot of really funny twitter accounts out there.
 Let's just pick one and get started.
