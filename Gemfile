@@ -9,7 +9,7 @@ gem 'rake'
 
 # Testing
 gem 'rspec', '~>3.0'
-gem 'simplecov'
+gem 'simplecov', '< 0.18'
 gem 'vcr'
 gem 'webmock'
 
