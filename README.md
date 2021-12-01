@@ -2,7 +2,7 @@
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/73443845cac0dadff540/maintainability)](https://codeclimate.com/github/claytron/augury/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/73443845cac0dadff540/test_coverage)](https://codeclimate.com/github/claytron/augury/test_coverage)
-[![Tests](https://travis-ci.com/claytron/augury.svg?branch=master)](https://travis-ci.com/github/claytron/augury)
+![Tests](https://github.com/claytron/augury/actions/workflows/ci.yml/badge.svg)
 
 Have you ever wanted to turn a twitter account into a fortune file?
 Well, today is your lucky day!
