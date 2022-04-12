@@ -28,7 +28,7 @@ describe Augury::Fortune do
       augury.twitter_setup
       tweets = augury.retrieve_tweets
       # Twitter UI says 510, not sure what I'm missing...
-      expect(tweets.count).to eq 506
+      expect(tweets.count).to eq 504
     end
 
     it 'fetches 300 for user', :vcr do
@@ -50,7 +50,7 @@ describe Augury::Fortune do
     end
 
     it 'outputs', :vcr do
-      config = twitter_auth.merge({ count: 1 })
+      config = twitter_auth.merge({ count: 2 })
       augury = Augury::Fortune.new('drunkhulk', "#{output_dir}/drunkhulk", config)
       augury.twitter_setup
       augury.retrieve_tweets
