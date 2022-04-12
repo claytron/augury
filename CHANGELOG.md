@@ -1,5 +1,9 @@
 # Changes
 
+## 1.1.2 (2022-04-12)
+
+- Fix issue with mismatched case for Twitter screen_name. (#22)
+
 ## 1.1.1 (2020-02-13)
 
 - Fix attribution on last item

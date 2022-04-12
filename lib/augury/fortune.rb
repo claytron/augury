@@ -27,6 +27,9 @@ module Augury
     end
 
     def retrieve_tweets
+      # Make sure the case of the name is correct to avoid errors in the Twitter API
+      screen_name = @twitter.user(@username).screen_name
+
       @tweets = collect_with_max_id do |max_id|
         options = {
           count: 200,
@@ -35,7 +38,7 @@ module Augury
           exclude_replies: !@config[:replies],
         }
         options[:max_id] = max_id unless max_id.nil?
-        @twitter.user_timeline(@username, options)
+        @twitter.user_timeline(screen_name, options)
       end
     rescue Twitter::Error::TooManyRequests => e
       reset_length = e.rate_limit.reset_in + 1
