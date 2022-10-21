@@ -3,6 +3,7 @@ AllCops:
   Exclude:
     - bin/**/*
     - vendor/**/*
+  NewCops: enable
 
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
@@ -42,4 +43,4 @@ Layout/CaseIndentation:
 
 # Ignore for rspec
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
+  IgnoredMethods: ['describe', 'context']
