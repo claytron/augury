@@ -74,6 +74,7 @@ module Augury
 
     private
 
+    # TODO: This override doesn't work in Thor 1.1+
     def options
       original_options = super
       defaults = Thor::CoreExt::HashWithIndifferentAccess.new(
