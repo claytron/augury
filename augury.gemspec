@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.description   = 'This gem turns a twitter feed into a fortune file that you can use with the fortune program'
   spec.homepage      = 'https://github.com/claytron/augury'
   spec.license       = 'MIT'
-  spec.required_ruby_version = Gem::Requirement.new('>= 2.6.0')
+  spec.required_ruby_version = Gem::Requirement.new('>= 2.7.0')
 
   spec.files         = `git ls-files -z`.split("\x0").reject { |f| f.match(%r{^(test|spec|features)/}) }
   spec.bindir        = 'exe'

@@ -1,5 +1,9 @@
 # Changes
 
+## x.x.x (xxxx-xx-xx)
+
+- Test against latest Ruby 3.1
+
 ## 1.1.2 (2022-04-12)
 
 - Fix issue with mismatched case for Twitter screen_name. (#22)
