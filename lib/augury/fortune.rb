@@ -92,7 +92,7 @@ module Augury
 
     def transforms
       all_transforms = []
-      all_transforms << [/https?:\/\/[^\s]+/, ''] if @config[:remove_links]
+      all_transforms << [%r{https?://[^\s]+}, ''] if @config[:remove_links]
       return all_transforms unless @config[:apply_transforms]
 
       all_transforms.push(*@config.dig('transforms', @username) || [])

@@ -17,6 +17,9 @@ Style/TrailingCommaInArrayLiteral:
 Style/RedundantSelf:
   Enabled: false
 
+Style/Documentation:
+  Enabled: false
+
 Layout/IndentationWidth:
   Enabled: false
 
@@ -40,6 +43,15 @@ Layout/EndAlignment:
 Layout/CaseIndentation:
   EnforcedStyle: end
   IndentOneStep: true
+
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/CyclomaticComplexity:
+  Max: 25
+
+Metrics/MethodLength:
+  Max: 20
 
 # Ignore for rspec
 Metrics/BlockLength:
