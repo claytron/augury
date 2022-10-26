@@ -14,10 +14,10 @@ describe Augury::Fortune do
     let(:twitter_auth) do
       {
         twitter: {
-          'consumer_key' => ENV['TWITTER_CONSUMER_KEY'],
-          'consumer_secret' => ENV['TWITTER_CONSUMER_SECRET'],
-          'access_token' => ENV['TWITTER_ACCESS_TOKEN'],
-          'access_token_secret' => ENV['TWITTER_ACCESS_TOKEN_SECRET'],
+          'consumer_key' => ENV.fetch('TWITTER_CONSUMER_KEY', nil),
+          'consumer_secret' => ENV.fetch('TWITTER_CONSUMER_SECRET', nil),
+          'access_token' => ENV.fetch('TWITTER_ACCESS_TOKEN', nil),
+          'access_token_secret' => ENV.fetch('TWITTER_ACCESS_TOKEN_SECRET', nil),
         },
       }
     end

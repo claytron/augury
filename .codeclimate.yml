@@ -4,7 +4,7 @@ plugins:
     enabled: true
   rubocop:
     enabled: true
-    channel: rubocop-0-92
+    channel: rubocop-1-31-0
   markdownlint:
     enabled: true
   bundler-audit:

@@ -1,8 +1,9 @@
 AllCops:
-  TargetRubyVersion: 2.6
+  TargetRubyVersion: 2.7
   Exclude:
     - bin/**/*
     - vendor/**/*
+  NewCops: enable
 
 Style/TrailingCommaInArguments:
   EnforcedStyleForMultiline: comma
@@ -14,6 +15,9 @@ Style/TrailingCommaInArrayLiteral:
   EnforcedStyleForMultiline: comma
 
 Style/RedundantSelf:
+  Enabled: false
+
+Style/Documentation:
   Enabled: false
 
 Layout/IndentationWidth:
@@ -40,6 +44,15 @@ Layout/CaseIndentation:
   EnforcedStyle: end
   IndentOneStep: true
 
+Metrics/AbcSize:
+  Max: 25
+
+Metrics/CyclomaticComplexity:
+  Max: 25
+
+Metrics/MethodLength:
+  Max: 20
+
 # Ignore for rspec
 Metrics/BlockLength:
-  ExcludedMethods: ['describe', 'context']
+  IgnoredMethods: ['describe', 'context']

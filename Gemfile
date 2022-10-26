@@ -21,7 +21,8 @@ gem 'pry-doc'
 
 # Linting / completion
 gem 'bundler-audit'
-gem 'rubocop', '0.92'
+# This has to match the code climate channel in .codeclimate.yml
+gem 'rubocop', '1.31.0'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
 gem 'solargraph'
