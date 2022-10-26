@@ -1,8 +1,8 @@
 # Changes
 
-## x.x.x (xxxx-xx-xx)
+## 1.2.0 (2022-10-26)
 
-- Test against latest Ruby 3.1
+- Test against latest Ruby 3.1, minimum version 2.7
 
 ## 1.1.2 (2022-04-12)
 
