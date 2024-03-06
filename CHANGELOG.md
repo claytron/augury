@@ -1,5 +1,9 @@
 # Changes
 
+## 2.0.0 (2024-03-05)
+
+- Test against latest Ruby 3.3 and minimum 3.0.x
+
 ## 1.2.0 (2022-10-26)
 
 - Test against latest Ruby 3.1, minimum version 2.7
