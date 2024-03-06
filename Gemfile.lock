@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    augury (1.2.0)
+    augury (2.0.0)
       thor (~> 1.0.0)
       twitter (~> 7.0)
       word_wrap (~> 1.0)
