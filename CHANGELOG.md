@@ -2,7 +2,7 @@
 
 ## 2.0.0 (2024-03-05)
 
-- Test against latest Ruby 3.3 and minimum 3.0.x
+- Test against latest Ruby 3.3 and minimum 3.1.x
 
 ## 1.2.0 (2022-10-26)
 

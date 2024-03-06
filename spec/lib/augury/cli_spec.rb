@@ -83,5 +83,14 @@ describe Augury::CLI do
         },
       )
     end
+
+    it 'allows regex in transforms' do
+      ENV['AUGURY_CFG_PATH'] = 'spec/fixtures/transforms.yml'
+      expect(subject.send(:options)).to include(
+        {
+          'global-transforms' => [[/(hello)/i, '\\1 world']],
+        },
+      )
+    end
   end
 end

@@ -1,0 +1,4 @@
+global-transforms:
+  -
+    - !ruby/regexp /(hello)/i
+    - "\\1 world"
