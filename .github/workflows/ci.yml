@@ -6,7 +6,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        ruby: ['3.0', '3.1', '3.2', "3.3"]
+        ruby: ['3.1', '3.2', "3.3"]
     runs-on: ${{ matrix.os }}
     env:
       TWITTER_CONSUMER_KEY: ${{ secrets.TWITTER_CONSUMER_KEY }}
@@ -23,7 +23,7 @@ jobs:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
     - run: bundle exec rake
-    - if: matrix.os == 'ubuntu-latest' && matrix.ruby == '3.2'
+    - if: matrix.os == 'ubuntu-latest' && matrix.ruby == '3.1'
       run: |
         curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
         chmod +x ./cc-test-reporter
