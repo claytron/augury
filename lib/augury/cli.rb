@@ -72,9 +72,7 @@ module Augury
       exit 1
     end
 
-    private
-
-    # TODO: This override doesn't work in Thor 1.1+
+    # Thor calls this publicly (e.g. Shell::Basic#quiet?), so it must not be private
     def options
       original_options = super
       defaults = Thor::CoreExt::HashWithIndifferentAccess.new(
