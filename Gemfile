@@ -14,10 +14,8 @@ gem 'vcr'
 gem 'webmock'
 
 # Debugging
-gem 'pry'
-gem 'pry-awesome_print'
-gem 'pry-byebug'
-gem 'pry-doc'
+gem 'debug'
+gem 'irb'
 
 # Linting / completion
 gem 'bundler-audit'
