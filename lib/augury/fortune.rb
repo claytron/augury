@@ -13,7 +13,7 @@ module Augury
       @tweets = []
     end
 
-    def collect_with_max_id(collection = [], max_id = nil, &block)
+    def collect_with_max_id(collection = [], max_id = nil, &)
       response = yield(max_id)
       collection += response
       if response.empty?
@@ -22,7 +22,7 @@ module Augury
         # Get everything or trim the results to the count
         @config[:count].zero? ? collection : collection[0..@config[:count] - 1]
       else
-        collect_with_max_id(collection, response.last.id - 1, &block)
+        collect_with_max_id(collection, response.last.id - 1, &)
       end
     end
 

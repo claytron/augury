@@ -9,7 +9,8 @@ gem 'rake'
 
 # Testing
 gem 'rspec', '~>3.0'
-gem 'simplecov', '< 0.18'
+# simplecov 1.x requires Ruby 3.4+, and we still test 3.3
+gem 'simplecov', '< 1.0'
 gem 'vcr'
 gem 'webmock'
 
@@ -19,7 +20,6 @@ gem 'irb'
 
 # Linting / completion
 gem 'bundler-audit'
-# This has to match the code climate channel in .codeclimate.yml
 gem 'rubocop', '1.31.0'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
